@@ -1,0 +1,98 @@
+/*
+  http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/
+  http://blog.scottlogic.com/2015/12/24/creating-an-angular-2-build.html
+  https://github.com/dsebastien/midnightLightV2
+*/
+//If you really need to have Windows support, it does not support rm - luckily there is rimraf which is a cross-compatible tool to do the same thing
+Atom-typescript
+
+
+1) INSTALAR O SERVIDOR NODE a partir da versão 5.8.0
+  OBS: O node.js sempre deve ser instalado antes do npm
+  Fazer o download do instalador da plataforma específica no site https://nodejs.org/en/#download
+  ATENÇÃO: O instalador para mac instala o node e uma versão desatualizada do npm que deve ser atualizada conforme passo 2.2 abaixo
+
+  node -v
+
+2) INSTALAR O NPM a partir da versão 3.8.1
+
+  2.1) Verficar se o npm está instalado e verificar a versão
+    npm -v
+
+  2.2) Se o npm não estiver instalado/atualizado, executar o instalador a partir da pasta /bin/npm do projeto:
+    cd /bin/npm
+  	sudo chmod 777 npm-latest.sh
+  	sudo chmod +x npm-latest.sh
+    sudo ./npm-latest.sh
+    npm -v
+
+
+
+npm install graceful-fs@^4.0.0
+npm install jspm@beta
+jspm init
+npm install typescript@beta --dev
+tsc --init
+
+
+"jspm": {
+  "name": "ex01",
+  "directories": {
+    "lib": "app"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "plugin-typescript": "github:frankwallis/plugin-typescript@^4.0.2"
+  },
+  "peerDependencies": {
+    "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+    "react": "npm:react@^0.14.7"
+  },
+  "overrides": {
+    "npm:typescript@1.8.7": {
+      "browser": {},
+      "map": {
+        "buffer": "@empty",
+        "child_process": "@empty",
+        "fs": "@empty",
+        "os": "@empty",
+        "path": "@empty",
+        "process": "@empty",
+        "readline": "@empty"
+      }
+    }
+  }
+},
+
+
+
+SystemJS.config({
+  packageConfigPaths: [
+    "github:*/*.json",
+    "npm:@*/*.json",
+    "npm:*.json"
+  ],
+  transpiler: "plugin-typescript",
+
+  map: {
+    "plugin-typescript": "github:frankwallis/plugin-typescript@4.0.2",
+    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
+    "react": "npm:react@0.14.7"
+  },
+
+  packages: {
+    "ex01": {
+      "main": "ex01.js"
+    },
+    "github:frankwallis/plugin-typescript@4.0.2": {
+      "map": {
+        "typescript": "npm:typescript@1.8.7"
+      }
+    },
+    "npm:react@0.14.7": {
+      "map": {
+        "fbjs": "npm:fbjs@0.6.1"
+      }
+    }
+  }
+});
