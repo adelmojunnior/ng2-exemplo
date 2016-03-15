@@ -1,19 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
- <head>
-  <script src="//cdn.rawgit.com/systemjs/systemjs/0.19.4/dist/system.js"></script>
-  <script src="//code.angularjs.org/2.0.0-alpha.40/angular2.js"></script>
+<head>
+  <title>My First Angular2 App</title>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
+  <script src="jspm_packages/system.js"></script>
+  <script src="jspm.config.js"></script>
+</head>
+<body>
+  <!-- this will be our entry component for the application -->
+  <app></app>
   <script>
-   System.config({
-      transpiler: 'typescript',
-      map: {typescript: '//cdn.rawgit.com/Microsoft/TypeScript/v1.6.2/lib/typescript.js'}
-    });
-
-   System.import('app.ts');
+    System.import('app').then(null, console.error.bind(console));
   </script>
- </head>
-
- <body>
-   <hello-world></hello-world>
- </body>
+</body>
 </html>

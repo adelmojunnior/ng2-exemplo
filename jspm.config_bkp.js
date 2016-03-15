@@ -1,11 +1,16 @@
 SystemJS.config({
   transpiler: "plugin-typescript",
+  typescriptOptions: {
+    "tsconfig": true
+  },
   packages: {
     "app": {
       "main": "ng2-exemplo.ts",
+      "format": "system",
+      "defaultExtension": "ts",
       "meta": {
-        "*.js": {
-          "loader": "plugin-typescript"
+        "*.ts": {
+          "loader": "ts"
         }
       }
     }
@@ -23,6 +28,7 @@ SystemJS.config({
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
     "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
+    "core-js": "npm:core-js@2.1.5",
     "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
     "es6-promise": "npm:es6-promise@3.1.2",
     "es6-shim": "npm:es6-shim@0.33.13",
@@ -35,6 +41,7 @@ SystemJS.config({
     "rxjs": "npm:rxjs@5.0.0-beta.2",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
+    "ts": "github:frankwallis/plugin-typescript@4.0.2",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
     "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
     "zone.js": "npm:zone.js@0.5.15"

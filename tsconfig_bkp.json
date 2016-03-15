@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
-        "module": "system",
+        "module": "ems",
         "target": "ES5",
         "noImplicitAny": false,
         "sourceMap": false,
         "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "noImplicitAny": false
     },
